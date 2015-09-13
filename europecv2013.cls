@@ -11,13 +11,13 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is Roberto Leinardi.
 %
 % This work consists of the file europecv.cls.
 %
-% The file europecv2013.cls is a derived work under the terms of the 
-% LPPL. It is based on version 2014-06-27 of europecv.cls which is 
+% The file europecv2013.cls is a derived work under the terms of the
+% LPPL. It is based on version 2014-06-27 of europecv.cls which is
 % part of the europecv package by Nicola Vitacolonna. A copy of europecv,
 % including the unmodified version of europecv.cls is available
 % from http://www.ctan.org/tex-archive/macros/latex/contrib/europecv.
@@ -237,11 +237,11 @@
 \DeclareOption{macukr}{\AtEndOfClass{\inputencoding{macukr}}}
 
 % Set font
-\DeclareOption{helvetica}{%                       
+\DeclareOption{helvetica}{%
   \renewcommand{\rmdefault}{phv}
   \renewcommand{\sfdefault}{phv}
 }
-\DeclareOption{arial}{%                       
+\DeclareOption{arial}{%
   \renewcommand{\rmdefault}{ma1} % (this font is NOT installed by default!)
   \renewcommand{\sfdefault}{ma1}
 }
@@ -277,7 +277,7 @@
 \DeclareOption{12pt}{\def\ecv@fontsize{12pt}}
 % Pass all other options (a4paper, 10pt, draft, openbib, etc...) to article
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}
-} 
+}
 
 \ExecuteOptions{english,logo,hrule} % Default options
 
@@ -353,6 +353,8 @@
 \newcommand*{\ecvtelephone}[2][]{\def\ecv@mobile{#2}\def\ecv@telephone{#1}}
 \newcommand*{\ecvemail}[2][]{\def\ecv@emailid{#2}\def\ecv@emailtext{#1}}
 \newcommand*{\ecvlinkedin}[1]{\def\ecv@linkedin{#1}}
+\newcommand*{\ecvgithub}[1]{\def\ecv@github{#1}}
+\newcommand*{\ecvimdb}[1]{\def\ecv@imdb{#1}}
 \newcommand*{\ecvhomepage}[1]{\def\ecv@homepage{#1}}
 \newcommand*{\ecvnationality}[1]{\def\ecv@nationality{#1}}
 \newcommand*{\ecvdateofbirth}[1]{\def\ecv@birth{#1}}
@@ -381,6 +383,8 @@
 \ecvtelephone{}
 \ecvemail{}
 \ecvlinkedin{}
+\ecvgithub{}
+\ecvimdb{}
 \ecvhomepage{}
 \ecvgender{}
 \ecvdateofbirth{}
@@ -416,6 +420,12 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_url}\end{array}$\e
 \ifx\@empty\ecv@linkedin\else
 $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_linkedin}\end{array}$\ecv@linkedin\par\vspace{10pt}
 \fi
+\ifx\@empty\ecv@github\else
+$\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_github}\end{array}$\ecv@github\par\vspace{10pt}
+\fi
+\ifx\@empty\ecv@imdb\else
+$\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_imdb}\end{array}$\ecv@imdb\par\vspace{10pt}
+\fi
 \ifx\@empty\ecv@gender
 	\ifx\@empty\ecv@birth
 		\ifx\@empty\ecv@nationality
@@ -433,7 +443,7 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_linkedin}\end{arra
 		\else
 			% false true true
 			\textcolor{curious-blue}{\ | \ecv@nationalitykey} \ecv@nationality \par\vspace{5pt}
-			
+
 		\fi
 	\fi
 \else
@@ -565,7 +575,7 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_linkedin}\end{arra
 
 % Text bullet
 \newcommand{\ecvbullet}{\raisebox{.35ex}[0cm][0cm]{\tiny\textbullet}}
-                                          
+
 \newenvironment{europecv}{%
   \ecvLeftColumnWidth{\ecv@leftcolwidth}
   \setlength\arrayrulewidth{\ecv@rulewidth}
@@ -618,7 +628,7 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_linkedin}\end{arra
  #4{\par\vspace{3pt}}
  #5}
 }
-          
+
 \newif\if@ecvitemstar
 \newcommand\ecvitem{\@ifstar{\@ecvitemstartrue \@ecvitem}%
   {\@ecvitemstarfalse\@ecvitem}}
